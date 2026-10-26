@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Rafael Elian — Pastor, professor e escritor</title>
+
+    <!-- SEO -->
+    <meta name="description"
+        content="Site oficial de Rafael Elian: pastor, professor e escritor. Conheça o autor e as obras Não se cale!, Antes do Compromisso e Suficiente." />
+    <meta name="author" content="Rafael Elian" />
+    <link rel="canonical" href="https://rafaelelian.com.br/" />
+    <meta property="og:title" content="Rafael Elian — Pastor, professor e escritor" />
+    <meta property="og:description" content="Conheça o autor e as obras de Rafael Elian. Não se cale! Eles precisam ouvir também." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://rafaelelian.com.br/" />
+    <meta property="og:image" content="https://rafaelelian.com.br/assets/raw_files/mockup_nao_se_cale.webp" />
+    <meta name="theme-color" content="#EAEAE5" />
+
+    <!-- Fontes (mesmas do design_system6) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Anton&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'stone-50': '#fafaf9', 'stone-100': '#f5f5f4', 'stone-200': '#e7e5e4', 'stone-300': '#d6d3d1',
+                        'stone-400': '#a8a29e', 'stone-500': '#78716c', 'stone-600': '#57534e', 'stone-800': '#292524',
+                        'stone-900': '#1c1917', 'acid': '#ccff00',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    animation: {
+                        'spin-slow': 'spin 14s linear infinite',
+                        'spin-beam': 'spin 3s linear infinite',
+                        'shimmer': 'shimmer 1.2s infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-subtle': 'pulseSubtle 5s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        shimmer: { from: { transform: 'translateX(-100%) skewX(-15deg)' }, to: { transform: 'translateX(200%) skewX(-15deg)' } },
+                        float: { '0%,100%': { transform: 'translateY(0) rotate(-1.5deg)' }, '50%': { transform: 'translateY(-14px) rotate(1deg)' } },
+                        pulseSubtle: { '0%,100%': { opacity: '.6', transform: 'scale(1)' }, '50%': { opacity: '1', transform: 'scale(1.08)' } },
+                    }
+                }
+            }
+        };
+    </script>
+
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #EAEAE5; color: #1C1C1C; overflow-x: hidden; }
+
+        /* ===== Animações base (design_system6) ===== */
+        .reveal { opacity: 0; transform: translateY(2rem); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .text-reveal-wrapper { overflow: hidden; display: inline-block; vertical-align: bottom; padding-bottom: .06em; }
+        .text-reveal-content { transform: translateY(110%); opacity: 0; transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.2s ease; display: block; }
+        .reveal-active .text-reveal-content { transform: translateY(0); opacity: 1; }
+        .delay-100 { transition-delay: .1s; } .delay-200 { transition-delay: .2s; } .delay-300 { transition-delay: .3s; }
+        .delay-500 { transition-delay: .5s; } .delay-700 { transition-delay: .7s; }
+
+        .marquee-container { display: flex; overflow: hidden; user-select: none; }
+        .marquee-content { flex-shrink: 0; display: flex; align-items: center; justify-content: space-around; min-width: 100%; animation: scroll 40s linear infinite; }
+        @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-100%); } }
+        .marquee-rev { animation-direction: reverse; }
+
+        .flashlight-card { position: relative; overflow: hidden; }
+        .flashlight-card::before {
+            content: ""; position: absolute; inset: 0;
+            background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, .4), transparent 40%);
+            opacity: 0; transition: opacity .5s; pointer-events: none; z-index: 2; mix-blend-mode: soft-light;
+        }
+        .flashlight-card:hover::before { opacity: 1; }
+        .glass-panel { background: rgba(255, 255, 255, .55); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, .6); }
+        .transparent-text-outline { -webkit-text-stroke: 1px rgba(28, 28, 28, .35); color: transparent; }
+        .bg-grid {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(0, 0, 0, .05) 1px, transparent 1px), linear-gradient(to bottom, rgba(0, 0, 0, .05) 1px, transparent 1px);
+        }
+        .anton { font-family: 'Anton', Impact, 'Arial Narrow', sans-serif; font-weight: 400; letter-spacing: .01em; }
+
+        /* ===== Específicos ===== */
+        #main-header.is-scrolled { box-shadow: 0 10px 30px -18px rgba(0, 0, 0, .35); }
+        .nav-link { position: relative; }
+        .nav-link::after { content: ""; position: absolute; left: 0; bottom: -4px; height: 1px; width: 100%; background: #1c1917; transform: scaleX(0); transform-origin: left; transition: transform .5s cubic-bezier(.16, 1, .3, 1); }
+        .nav-link:hover::after { transform: scaleX(1); }
+
+        .hero-title { font-size: clamp(3.4rem, 15vw, 9.5rem); }
+        @media (min-width: 768px) { .hero-title { font-size: clamp(4rem, 8.4vw, 9.5rem); } }
+
+        .chip { display: inline-flex; align-items: center; gap: .4rem; padding: .35rem .8rem; border-radius: 999px; border: 1px solid rgba(28, 25, 23, .2); background: rgba(255, 255, 255, .5); backdrop-filter: blur(8px); font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #292524; }
+
+        .portrait-scan { animation: scan 5s ease-in-out infinite; }
+        @keyframes scan { 0% { top: 8%; opacity: 0; } 12% { opacity: 1; } 88% { opacity: 1; } 100% { top: 92%; opacity: 0; } }
+
+        /* capas tipográficas (substitua por imagem quando tiver a capa) */
+        .book-cover {
+            position: relative; aspect-ratio: 3 / 4; width: 7.25rem; flex-shrink: 0; padding: .9rem .8rem .8rem 1.1rem; overflow: hidden;
+            display: flex; flex-direction: column; justify-content: space-between; border-radius: 4px 10px 10px 4px;
+            box-shadow: 0 18px 30px -14px rgba(0, 0, 0, .55), inset -2px 0 0 rgba(255, 255, 255, .06);
+            transform: perspective(700px) rotateY(-14deg); transition: transform .8s cubic-bezier(.16, 1, .3, 1);
+        }
+        @media (min-width: 640px) { .book-cover { width: 9rem; padding: 1.1rem 1rem 1rem 1.35rem; } }
+        .book-cover::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 9px; background: linear-gradient(90deg, rgba(0, 0, 0, .35), rgba(255, 255, 255, .08)); }
+        .group\/work:hover .book-cover { transform: perspective(700px) rotateY(-3deg) translateY(-4px); }
+        .book-cover--dark { background: #1c1917; color: #ccff00; }
+        .book-cover--acid { background: #ccff00; color: #1c1917; }
+        .book-cover .bc-title { font-family: 'Anton', Impact, sans-serif; font-size: 1.1rem; line-height: .98; text-transform: uppercase; }
+        @media (min-width: 640px) { .book-cover .bc-title { font-size: 1.4rem; } }
+        .book-cover .bc-by { font-family: 'JetBrains Mono', monospace; font-size: 8px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; opacity: .8; }
+
+        .cv-field { width: 100%; background: rgba(255, 255, 255, .06); border: 1px solid rgba(255, 255, 255, .14); border-radius: .75rem; padding: .7rem .9rem; color: #fff; font-size: 14px; outline: none; transition: border-color .3s, background .3s; }
+        .cv-field::placeholder { color: #78716c; }
+        .cv-field:focus { border-color: #ccff00; background: rgba(255, 255, 255, .1); }
+        .cv-bubble { background: #005c4b; color: #fff; border-radius: 1rem 1rem .25rem 1rem; }
+
+        /* ===== Dobra O AUTOR ===== */
+        .scrub-word { color: #d6d3d1; transition: color .5s ease; }
+        .scrub-word.on { color: #1c1917; }
+        .hl { background: linear-gradient(#ccff00, #ccff00) no-repeat 0 92% / 0% .5em; transition: background-size 1.2s cubic-bezier(.16, 1, .3, 1) .6s; font-weight: 600; color: #1c1917; }
+        .reveal.active .hl { background-size: 100% .5em; }
+
+        .vocation { position: relative; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 1rem; padding: 1.15rem .25rem; border-top: 1px solid rgba(28, 25, 23, .2); isolation: isolate; overflow: hidden; cursor: pointer; transition: padding .6s cubic-bezier(.16, 1, .3, 1); -webkit-tap-highlight-color: transparent; }
+        .vocation--last { border-bottom: 1px solid rgba(28, 25, 23, .2); }
+        .vocation::before { content: ""; position: absolute; inset: 0; background: #ccff00; transform: scaleX(0); transform-origin: left; transition: transform .6s cubic-bezier(.16, 1, .3, 1); z-index: -1; }
+        .vocation:hover::before, .vocation.is-open::before { transform: scaleX(1); }
+        .vocation:hover, .vocation.is-open { padding-left: 1.1rem; padding-right: 1.1rem; }
+        .vocation .v-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; color: #78716c; letter-spacing: .08em; transition: color .4s; }
+        .vocation:hover .v-num, .vocation.is-open .v-num { color: #1c1917; }
+        .vocation .v-title { display: block; font-size: clamp(1.6rem, 6vw, 2.25rem); font-weight: 700; letter-spacing: -0.04em; line-height: 1; text-transform: uppercase; color: #1c1917; transition: transform .6s cubic-bezier(.16, 1, .3, 1); }
+        .vocation:hover .v-title, .vocation.is-open .v-title { transform: translateX(.3rem); }
+        .vocation .v-desc { display: block; margin-top: .35rem; font-size: 12px; line-height: 1.3; color: #78716c; transition: color .4s; }
+        .vocation:hover .v-desc, .vocation.is-open .v-desc { color: #292524; }
+        .vocation .v-icon { display: flex; height: 2.5rem; width: 2.5rem; align-items: center; justify-content: center; border-radius: 999px; border: 1px solid rgba(28, 25, 23, .25); font-size: 1.15rem; color: #1c1917; transition: transform .6s cubic-bezier(.16, 1, .3, 1), background .4s, color .4s; }
+        .vocation:hover .v-icon, .vocation.is-open .v-icon { background: #1c1917; color: #ccff00; transform: rotate(-12deg) scale(1.08); }
+
+        .tilt-card { transform-style: preserve-3d; transition: transform .5s cubic-bezier(.16, 1, .3, 1), box-shadow .5s; will-change: transform; }
+
+        .family-chip { display: flex; align-items: center; gap: .75rem; border-radius: 1rem; border: 1px solid rgba(214, 211, 209, .9); background: rgba(255, 255, 255, .7); padding: .8rem 1rem; transition: transform .5s cubic-bezier(.16, 1, .3, 1), background .4s, box-shadow .5s; }
+        .family-chip:hover { background: #fff; transform: translateY(-4px); box-shadow: 0 18px 30px -18px rgba(0, 0, 0, .35); }
+        .fc-avatar { display: flex; height: 2.5rem; width: 2.5rem; flex-shrink: 0; align-items: center; justify-content: center; border-radius: 999px; background: #1c1917; color: #ccff00; border: 2px solid #fff; font-family: 'Anton', Impact, sans-serif; font-size: 1.05rem; transition: transform .5s cubic-bezier(.16, 1, .3, 1), background .4s, color .4s; }
+        .fc-avatar--b { background: #ccff00; color: #1c1917; }
+        .family-chip:hover .fc-avatar { transform: rotate(-10deg) scale(1.08); }
+        .family-chip:hover .fc-avatar:not(.fc-avatar--b) { background: #ccff00; color: #1c1917; }
+        .family-chip:hover .fc-avatar--b { background: #1c1917; color: #ccff00; }
+
+        details summary { list-style: none; }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation: none !important; transition: none !important; }
+            .reveal, .text-reveal-content { opacity: 1 !important; transform: none !important; }
+        }
+    </style>
+    <noscript><style>.reveal { opacity: 1; transform: none; } .text-reveal-content { opacity: 1; transform: none; }</style></noscript>
+</head>
+
+<body class="antialiased min-h-screen selection:bg-stone-800 selection:text-white">
+    <div class="max-w-[1400px] mx-auto border-x border-stone-300 relative bg-[#EAEAE5] shadow-2xl">
+
+        <!-- Linhas de grade ao fundo -->
+        <div class="absolute inset-0 pointer-events-none grid grid-cols-1 md:grid-cols-12 gap-0 z-0 h-full w-full" aria-hidden="true">
+            <div class="hidden md:block md:col-span-3 border-r border-stone-300/40 h-full"></div>
+            <div class="hidden md:block md:col-span-6 border-r border-stone-300/40 h-full"></div>
+            <div class="hidden md:block md:col-span-3 h-full"></div>
+        </div>
+
+        <!-- ================= HEADER ================= -->
+        <header id="main-header" class="relative z-50 border-b border-stone-300 sticky top-0 bg-[#EAEAE5]/90 backdrop-blur-md transition-shadow duration-500">
+            <div class="flex justify-between items-center px-4 md:px-6 py-4">
+                <a href="#inicio" class="flex items-center gap-3 group" aria-label="Rafael Elian — início">
+                    <span class="w-9 h-9 flex items-center justify-center bg-stone-900 text-acid rounded-full group-hover:rotate-180 transition-transform duration-700">
+                        <iconify-icon icon="solar:pen-new-round-bold" class="text-base"></iconify-icon>
+                    </span>
+                    <span class="leading-none">
+                        <span class="block font-mono text-xs font-bold uppercase tracking-tight">Rafael Elian</span>
+                        <span class="block font-mono text-[10px] uppercase text-stone-500 tracking-wider mt-0.5">Autor</span>
+                    </span>
+                </a>
+
+                <nav class="hidden md:flex items-center gap-7" aria-label="Principal">
+                    <a href="#obras" class="nav-link text-xs font-mono uppercase tracking-tight text-stone-600 hover:text-stone-900 transition-colors">Obras</a>
+                    <a href="#autor" class="nav-link text-xs font-mono uppercase tracking-tight text-stone-600 hover:text-stone-900 transition-colors">O Autor</a>
+                    <a href="#convite" class="nav-link text-xs font-mono uppercase tracking-tight text-stone-600 hover:text-stone-900 transition-colors">Convite</a>
+                </nav>
+
+                <div class="flex items-center gap-3">
+                    <a href="nao_se_cale/assets/index.html" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 bg-stone-900 text-acid hover:bg-stone-800 rounded-full text-xs font-mono font-bold uppercase tracking-tight transition-all shadow-md hover:shadow-xl">
+                        Não se cale!
+                        <iconify-icon icon="solar:arrow-right-up-linear" class="text-sm"></iconify-icon>
+                    </a>
+                    <button id="menu-btn" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu"
+                        class="md:hidden w-10 h-10 rounded-full border border-stone-300 bg-white/60 flex items-center justify-center">
+                        <iconify-icon id="menu-icon" icon="solar:hamburger-menu-linear" class="text-xl"></iconify-icon>
+                    </button>
+                </div>
+            </div>
+            <div id="mobile-menu" class="md:hidden hidden border-t border-stone-300 bg-[#EAEAE5]/95 backdrop-blur-md">
+                <div class="px-4 py-4 flex flex-col gap-1">
+                    <a href="#obras" class="py-3 border-b border-stone-300/70 text-sm font-mono uppercase tracking-tight">Obras</a>
+                    <a href="#autor" class="py-3 border-b border-stone-300/70 text-sm font-mono uppercase tracking-tight">O Autor</a>
+                    <a href="#convite" class="py-3 border-b border-stone-300/70 text-sm font-mono uppercase tracking-tight">Convite</a>
+                    <a href="nao_se_cale/assets/index.html" class="mt-3 inline-flex items-center justify-center gap-2 px-5 py-3 bg-stone-900 text-acid rounded-full text-xs font-mono font-bold uppercase tracking-tight">
+                        Conhecer Não se cale! <iconify-icon icon="solar:arrow-right-up-linear" class="text-sm"></iconify-icon>
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- ================= HERO ================= -->
+        <section id="inicio" class="relative z-10 grid grid-cols-1 md:grid-cols-12 border-b border-stone-300 overflow-hidden scroll-mt-20">
+            <!-- Texto -->
+            <div class="md:col-span-7 relative bg-grid px-5 sm:px-8 md:px-12 pt-12 pb-14 md:py-20 flex flex-col justify-center md:border-r border-stone-300">
+                <div class="pointer-events-none absolute top-10 right-6 w-64 h-64 bg-acid/20 rounded-full blur-3xl mix-blend-multiply animate-pulse-subtle"></div>
+                <div class="pointer-events-none absolute bottom-6 -left-10 w-72 h-72 bg-stone-300/40 rounded-full blur-3xl mix-blend-multiply"></div>
+
+                <div class="relative z-10" data-reveal-group id="hero-copy">
+                    <div class="reveal delay-100 flex flex-wrap items-center gap-3 mb-6">
+                        <span class="chip">Pastor</span><span class="chip">Professor</span><span class="chip">Escritor</span>
+                    </div>
+
+                    <h1 class="hero-title font-bold tracking-tighter leading-[0.88] uppercase text-stone-900 mb-7">
+                        <span class="text-reveal-wrapper block"><span class="text-reveal-content">Rafael</span></span>
+                        <span class="text-reveal-wrapper block"><span class="text-reveal-content delay-100 transparent-text-outline">Elian</span></span>
+                    </h1>
+
+                    <p class="reveal delay-300 text-base sm:text-lg text-stone-600 max-w-lg leading-relaxed mb-9">
+                        Dedicado ao ensino e à pregação da Palavra, com paixão por ver vidas transformadas pelo Evangelho e o compromisso de anunciar a mensagem da Graça.
+                    </p>
+
+                    <div class="reveal delay-500 flex flex-col sm:flex-row sm:items-center gap-4">
+                        <!-- Botão com beam (design_system6) -->
+                        <a href="nao_se_cale/assets/index.html" class="group relative inline-flex items-center justify-center overflow-hidden rounded-full p-[2px] w-full sm:w-auto">
+                            <span class="absolute inset-[-1000%] animate-spin-beam bg-[conic-gradient(from_0deg,transparent_0_300deg,#ccff00_360deg)]"></span>
+                            <span class="relative z-10 flex w-full items-center justify-center gap-3 overflow-hidden rounded-full bg-stone-900 px-7 py-4 text-xs sm:text-sm font-mono font-bold uppercase tracking-widest text-acid">
+                                <span class="absolute top-0 left-0 h-full w-full -skew-x-12 bg-gradient-to-r from-transparent via-white/25 to-transparent opacity-0 group-hover:animate-shimmer group-hover:opacity-100"></span>
+                                <span class="relative">Conhecer Não se cale!</span>
+                                <iconify-icon icon="solar:arrow-right-up-linear" class="relative text-lg transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1"></iconify-icon>
+                            </span>
+                        </a>
+                        <a href="#obras" class="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full border border-stone-900/20 bg-white/50 hover:bg-white text-xs sm:text-sm font-mono font-bold uppercase tracking-widest text-stone-900 transition-colors">
+                            Ver todas as obras
+                            <iconify-icon icon="solar:arrow-down-linear" class="text-base"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Retrato -->
+            <div class="md:col-span-5 relative p-5 sm:p-8 md:p-10 flex items-center">
+                <div class="reveal delay-200 relative w-full">
+                    <div id="portrait" class="group relative h-[440px] sm:h-[560px] md:h-[620px] rounded-2xl bg-stone-900 shadow-2xl flashlight-card cursor-crosshair">
+                        <div class="absolute inset-0 overflow-hidden rounded-2xl">
+                            <div id="portrait-parallax" class="absolute -inset-4 will-change-transform">
+                                <img src="assets/raw_files/FOTO-SORRINDO.webp" alt="Retrato de Rafael Elian" class="w-full h-full object-cover object-[50%_22%]" />
+                            </div>
+                            <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-stone-900 via-stone-900/20 to-transparent"></div>
+                            <div class="pointer-events-none absolute inset-0 bg-grid opacity-40 mix-blend-soft-light"></div>
+                            <div class="pointer-events-none absolute -bottom-24 -left-16 w-72 h-72 rounded-full bg-acid/20 blur-3xl animate-pulse-subtle"></div>
+                            <div class="portrait-scan pointer-events-none absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-acid to-transparent"></div>
+                        </div>
+                        <!-- cantos -->
+                        <span class="pointer-events-none absolute top-4 left-4 w-5 h-5 border-t-2 border-l-2 border-acid opacity-0 -translate-x-2 -translate-y-2 transition-all duration-500 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 z-20"></span>
+                        <span class="pointer-events-none absolute top-4 right-4 w-5 h-5 border-t-2 border-r-2 border-acid opacity-0 translate-x-2 -translate-y-2 transition-all duration-500 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 z-20"></span>
+                        <span class="pointer-events-none absolute bottom-4 left-4 w-5 h-5 border-b-2 border-l-2 border-acid opacity-0 -translate-x-2 translate-y-2 transition-all duration-500 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 z-20"></span>
+                        <span class="pointer-events-none absolute bottom-4 right-4 w-5 h-5 border-b-2 border-r-2 border-acid opacity-0 translate-x-2 translate-y-2 transition-all duration-500 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 z-20"></span>
+
+                        <div class="absolute top-5 left-5 z-20">
+                            <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-stone-900/80 backdrop-blur-md border border-white/10 text-acid text-[10px] font-mono font-bold uppercase tracking-widest shadow-lg">
+                                <span class="w-1.5 h-1.5 rounded-full bg-acid animate-pulse"></span> Autor
+                            </span>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 p-6 sm:p-8 z-20 text-white">
+                            <p class="text-[10px] font-mono uppercase tracking-widest text-acid mb-1">Pastor · Comunidade Cristã Videira</p>
+                            <p class="text-2xl sm:text-3xl font-bold tracking-tighter uppercase leading-none">Rafael Elian</p>
+                        </div>
+                    </div>
+
+                    <!-- selo giratório -->
+                    <div class="absolute -top-6 -right-1 sm:-right-5 z-30 w-28 h-28 sm:w-32 sm:h-32 rounded-full bg-acid shadow-xl flex items-center justify-center" aria-hidden="true">
+                        <svg viewBox="0 0 120 120" class="absolute inset-0 w-full h-full animate-spin-slow">
+                            <defs><path id="seal-circle" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0" /></defs>
+                            <text font-family="JetBrains Mono, monospace" font-size="9" font-weight="700" fill="#1c1917">
+                                <textPath href="#seal-circle" textLength="270" lengthAdjust="spacing">NÃO SE CALE! • RAFAEL ELIAN •</textPath>
+                            </text>
+                        </svg>
+                        <iconify-icon icon="solar:book-bookmark-bold" class="text-4xl text-stone-900"></iconify-icon>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= FAIXA ================= -->
+        <div class="relative z-10 border-b border-stone-300 bg-stone-900 py-3 overflow-hidden" aria-hidden="true">
+            <div class="marquee-container">
+                <div class="marquee-content">
+                    <span class="anton mx-6 text-2xl sm:text-3xl uppercase text-white">Não se cale!</span>
+                    <iconify-icon icon="solar:asterisk-bold" class="text-2xl text-acid mx-3 animate-spin-slow"></iconify-icon>
+                    <span class="anton mx-6 text-2xl sm:text-3xl uppercase text-transparent" style="-webkit-text-stroke:1px rgba(255,255,255,.45)">Antes do Compromisso</span>
+                    <iconify-icon icon="solar:asterisk-bold" class="text-2xl text-acid mx-3 animate-spin-slow"></iconify-icon>
+                    <span class="anton mx-6 text-2xl sm:text-3xl uppercase text-white">Suficiente</span>
+                    <iconify-icon icon="solar:asterisk-bold" class="text-2xl text-acid mx-3 animate-spin-slow"></iconify-icon>
+                </div>
+                <div class="marquee-content">
+                    <span class="anton mx-6 text-2xl sm:text-3xl uppercase text-white">Não se cale!</span>
+                    <iconify-icon icon="solar:asterisk-bold" class="text-2xl text-acid mx-3 animate-spin-slow"></iconify-icon>
+                    <span class="anton mx-6 text-2xl sm:text-3xl uppercase text-transparent" style="-webkit-text-stroke:1px rgba(255,255,255,.45)">Antes do Compromisso</span>
+                    <iconify-icon icon="solar:asterisk-bold" class="text-2xl text-acid mx-3 animate-spin-slow"></iconify-icon>
+                    <span class="anton mx-6 text-2xl sm:text-3xl uppercase text-white">Suficiente</span>
+                    <iconify-icon icon="solar:asterisk-bold" class="text-2xl text-acid mx-3 animate-spin-slow"></iconify-icon>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 01 / OBRAS ================= -->
+        <section id="obras" class="relative z-10 border-b border-stone-300 py-16 md:py-24 scroll-mt-16 overflow-hidden">
+            <div class="pointer-events-none absolute inset-0 bg-grid opacity-30"></div>
+            <div class="relative max-w-[1520px] mx-auto px-5 sm:px-8 md:px-12 lg:px-16">
+
+                <div data-reveal-group class="mb-10 md:mb-14">
+                    <div class="reveal flex items-center gap-3 mb-4">
+                        <span class="text-xs font-mono uppercase tracking-widest text-stone-500">01 / OBRAS</span>
+                        <span class="w-12 h-[1px] bg-stone-300"></span>
+                    </div>
+                </div>
+
+                <!-- OBRA PRINCIPAL: Não se cale! -->
+                <a href="nao_se_cale/assets/index.html" aria-label="Conhecer o livro Não se cale!"
+                    class="reveal group relative block rounded-3xl bg-stone-900 text-white shadow-2xl flashlight-card overflow-hidden">
+                    <div class="pointer-events-none absolute -top-24 -right-20 w-80 h-80 rounded-full bg-acid/20 blur-3xl animate-pulse-subtle"></div>
+                    <div class="pointer-events-none absolute inset-0 bg-grid opacity-20 mix-blend-soft-light"></div>
+                    <span class="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-acid to-transparent"></span>
+
+                    <div class="relative grid grid-cols-1 lg:grid-cols-12 items-center">
+                        <!-- capa: a imagem tem fundo preto, então ela ocupa a coluna inteira, funde com o card (lighten) e suaviza as bordas -->
+                        <div class="lg:col-span-6 relative flex items-center justify-center overflow-hidden min-h-[240px] sm:min-h-[340px] lg:min-h-[480px]">
+                            <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_60%,rgba(204,255,0,.14),transparent_60%)]"></div>
+                            <img src="assets/raw_files/mockup_nao_se_cale.webp" alt="Capa do livro Não se cale!"
+                                class="relative w-[118%] sm:w-[105%] lg:w-[118%] max-w-none mix-blend-lighten animate-float transition-transform duration-700 group-hover:scale-105"
+                                style="-webkit-mask-image:radial-gradient(ellipse 62% 60% at 50% 50%,#000 55%,transparent 100%);mask-image:radial-gradient(ellipse 62% 60% at 50% 50%,#000 55%,transparent 100%)" />
+                        </div>
+                        <!-- texto -->
+                        <div class="lg:col-span-6 px-6 sm:px-10 pb-10 pt-2 lg:py-14 lg:pl-4 lg:pr-14">
+                            <div class="flex flex-wrap items-center gap-2 mb-5">
+                                <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-acid text-stone-900 text-[10px] font-mono font-bold uppercase tracking-widest">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-stone-900 animate-pulse"></span> Obra principal
+                                </span>
+                                <span class="px-3 py-1.5 rounded-full border border-white/15 text-[10px] font-mono font-bold uppercase tracking-widest text-stone-300">2ª edição</span>
+                            </div>
+                            <h3 class="anton text-[clamp(3rem,11vw,6.5rem)] leading-[.92] uppercase">
+                                Não se <span class="text-acid">cale!</span>
+                            </h3>
+                            <p class="mt-2 text-lg sm:text-xl font-semibold tracking-tight text-stone-200">Eles precisam ouvir também.</p>
+                            <p class="mt-4 text-sm sm:text-base text-stone-400 leading-relaxed max-w-xl">
+                                Uma reflexão visceral sobre fé, experiências e transformação, inspirada em Marcos 11:23.
+                            </p>
+                            <span class="mt-8 inline-flex items-center gap-3 rounded-full bg-acid px-7 py-4 text-xs sm:text-sm font-mono font-bold uppercase tracking-widest text-stone-900 transition-all duration-500 group-hover:gap-5 group-hover:shadow-[0_0_40px_-6px_#ccff00]">
+                                Conhecer o livro
+                                <iconify-icon icon="solar:arrow-right-linear" class="text-lg"></iconify-icon>
+                            </span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- OUTRAS OBRAS -->
+                <div class="mt-5 md:mt-6 grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
+
+                    <!-- Antes do Compromisso -->
+                    <!-- Quando o site do livro estiver pronto: troque <article> por <a href="antesdocompromisso/"> e o selo "Em breve" pelo botão -->
+                    <article class="reveal delay-100 group/work relative rounded-2xl border border-stone-300/80 bg-white/70 hover:bg-white shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-500 p-5 sm:p-6 flex items-center gap-5 sm:gap-6 flashlight-card">
+                        <span class="absolute inset-y-0 left-0 w-1 bg-acid scale-y-0 origin-top transition-transform duration-500 group-hover/work:scale-y-100"></span>
+                        <div class="book-cover book-cover--dark" aria-hidden="true">
+                            <span class="bc-by">Rafael Elian</span>
+                            <span class="bc-title">Antes do<br>Compro&shy;misso</span>
+                        </div>
+                        <div class="min-w-0">
+                            <span class="text-[10px] font-mono text-stone-400 tracking-widest">02</span>
+                            <h3 class="text-xl sm:text-2xl font-bold tracking-tighter uppercase leading-none text-stone-900 mt-1">Antes do Compromisso</h3>
+                            <div class="mt-4 flex flex-wrap items-center gap-2">
+                                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-stone-900 text-acid text-[10px] font-mono font-bold uppercase tracking-widest"><iconify-icon icon="solar:clock-circle-bold"></iconify-icon> Em breve</span>
+                                <span class="px-3 py-1.5 rounded-full border border-stone-300 text-[10px] font-mono font-bold uppercase tracking-widest text-stone-600">Jan/2027</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Suficiente -->
+                    <!-- Quando o site do livro estiver pronto: troque <article> por <a href="suficiente/"> -->
+                    <article class="reveal delay-200 group/work relative rounded-2xl border border-stone-300/80 bg-white/70 hover:bg-white shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-500 p-5 sm:p-6 flex items-center gap-5 sm:gap-6 flashlight-card">
+                        <span class="absolute inset-y-0 left-0 w-1 bg-acid scale-y-0 origin-top transition-transform duration-500 group-hover/work:scale-y-100"></span>
+                        <div class="book-cover book-cover--acid" aria-hidden="true">
+                            <span class="bc-by">Rafael Elian</span>
+                            <span class="bc-title">Sufi&shy;ciente</span>
+                        </div>
+                        <div class="min-w-0">
+                            <span class="text-[10px] font-mono text-stone-400 tracking-widest">03</span>
+                            <h3 class="text-xl sm:text-2xl font-bold tracking-tighter uppercase leading-none text-stone-900 mt-1">Suficiente</h3>
+                            <div class="mt-4 flex flex-wrap items-center gap-2">
+                                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-stone-900 text-acid text-[10px] font-mono font-bold uppercase tracking-widest"><iconify-icon icon="solar:clock-circle-bold"></iconify-icon> Em breve</span>
+                                <span class="px-3 py-1.5 rounded-full border border-stone-300 text-[10px] font-mono font-bold uppercase tracking-widest text-stone-600">Mar/2027</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= 02 / O AUTOR ================= -->
+        <section id="autor" class="relative z-10 border-b border-stone-300 py-14 md:py-20 scroll-mt-16 overflow-hidden">
+            <div class="pointer-events-none absolute inset-0 bg-grid opacity-30"></div>
+            <!-- luz que segue o mouse -->
+            <div id="autor-glow" class="pointer-events-none absolute inset-0 mix-blend-multiply opacity-80" style="background:radial-gradient(460px circle at var(--gx,78%) var(--gy,18%),rgba(204,255,0,.34),transparent 62%)"></div>
+            <!-- palavra fantasma com parallax -->
+            <div class="pointer-events-none absolute right-[-4vw] bottom-[-3vw] select-none whitespace-nowrap anton text-[34vw] md:text-[24vw] leading-none text-transparent" data-speed="-0.06" style="-webkit-text-stroke:1.5px rgba(28,28,28,.07)" aria-hidden="true">AUTOR</div>
+
+            <div class="relative max-w-[1520px] mx-auto px-5 sm:px-8 md:px-12 lg:px-16">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+
+                    <!-- ESQUERDA -->
+                    <div class="lg:col-span-5 flex flex-col gap-8">
+                        <div data-reveal-group>
+                            <div class="reveal flex items-center gap-3 mb-4">
+                                <span class="text-xs font-mono uppercase tracking-widest text-stone-500">02 / O AUTOR</span>
+                                <span class="w-12 h-[1px] bg-stone-300"></span>
+                            </div>
+                            <h2 class="text-5xl sm:text-6xl xl:text-7xl font-bold tracking-tighter uppercase leading-[0.9] text-stone-900">
+                                <span class="block text-reveal-wrapper"><span class="text-reveal-content">Pastor,</span></span>
+                                <span class="block text-reveal-wrapper"><span class="text-reveal-content delay-100 transparent-text-outline">professor</span></span>
+                                <span class="block text-reveal-wrapper"><span class="text-reveal-content delay-200">e escritor.</span></span>
+                            </h2>
+                        </div>
+
+                        <a href="https://instagram.com/rafaelelian" target="_blank" rel="noopener"
+                            class="reveal delay-500 ig-btn self-start mt-2 group/ig relative inline-flex items-center gap-3 overflow-hidden rounded-full border border-stone-900/20 bg-white/60 px-6 py-3.5 text-xs font-mono font-bold uppercase tracking-widest text-stone-900 transition-colors duration-500 hover:text-acid">
+                            <span class="absolute inset-0 -z-0 origin-left scale-x-0 bg-stone-900 transition-transform duration-500 ease-out group-hover/ig:scale-x-100"></span>
+                            <iconify-icon icon="mdi:instagram" class="relative text-lg"></iconify-icon>
+                            <span class="relative">@rafaelelian</span>
+                            <iconify-icon icon="solar:arrow-right-up-linear" class="relative text-base transition-transform duration-500 group-hover/ig:translate-x-1 group-hover/ig:-translate-y-1"></iconify-icon>
+                        </a>
+                    </div>
+
+                    <!-- DIREITA -->
+                    <div class="lg:col-span-7">
+
+                        <!-- Bio com tilt 3D + texto que acende ao rolar -->
+                        <div class="reveal delay-200" style="perspective:1200px">
+                            <div class="tilt-card glass-panel relative rounded-3xl border border-stone-300/80 shadow-xl p-6 sm:p-9 flashlight-card">
+                                <span class="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-acid to-transparent"></span>
+                                <span class="pointer-events-none absolute top-5 left-6 sm:left-9 inline-flex items-center gap-2 rounded-full bg-stone-900 px-3 py-1 text-[10px] font-mono font-bold uppercase tracking-widest text-acid shadow-lg">
+                                    <span class="h-1.5 w-1.5 rounded-full bg-acid animate-pulse"></span> Sobre o Rafael
+                                </span>
+                                <iconify-icon icon="solar:quote-up-bold" class="absolute right-6 top-6 text-5xl text-stone-900/[0.06]"></iconify-icon>
+
+                                <p data-scrub class="mt-11 text-xl sm:text-[1.65rem] font-semibold tracking-tight leading-[1.3]">Rafael é casado com Viviane Vale Elian, pai do Benjamim e pai do coração de Theo e Valentina. Pastor, professor e escritor, carrega uma profunda paixão por ver vidas transformadas pelo Evangelho.</p>
+
+                                <p class="mt-6 text-sm sm:text-[15px] text-stone-600 leading-relaxed">
+                                    Dedicado ao ensino e à pregação da Palavra, Rafael também se expressa por meio da escrita, sendo autor de obras como Não se cale!, Antes do Compromisso e Suficiente. Sua jornada é marcada pelo compromisso de anunciar a <span class="hl">mensagem da Graça</span> por onde Deus o conduz, inspirando pessoas a viverem uma fé autêntica e transformadora.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= 03 / CONVITE ================= -->
+        <section id="convite" class="relative z-10 border-b border-stone-300 py-16 md:py-24 scroll-mt-16 overflow-hidden">
+            <div class="pointer-events-none absolute inset-0 bg-grid opacity-30"></div>
+            <div class="pointer-events-none absolute left-0 top-[4%] select-none whitespace-nowrap anton text-[34vw] sm:text-[24vw] leading-none text-transparent" style="-webkit-text-stroke:1.5px rgba(28,28,28,.07)" aria-hidden="true">CONVITE</div>
+            <div class="relative max-w-[1520px] mx-auto px-5 sm:px-8 md:px-12 lg:px-16">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+
+                    <div class="lg:col-span-7" data-reveal-group>
+                        <div class="reveal flex items-center gap-3 mb-4">
+                            <span class="text-xs font-mono uppercase tracking-widest text-stone-500">03 / CONVITE</span>
+                            <span class="w-12 h-[1px] bg-stone-300"></span>
+                        </div>
+                        <h2 class="text-4xl sm:text-6xl xl:text-7xl font-bold tracking-tighter uppercase leading-[0.92] text-stone-900">
+                            <span class="block text-reveal-wrapper"><span class="text-reveal-content">Leve a <span class="transparent-text-outline">Palavra</span></span></span>
+                            <span class="block text-reveal-wrapper"><span class="text-reveal-content delay-100">à sua igreja.</span></span>
+                        </h2>
+                        <p class="reveal delay-300 mt-6 max-w-xl text-base sm:text-lg text-stone-600 leading-relaxed">
+                            Deseja receber o Rafael para compartilhar a Palavra de Deus em sua igreja? Será uma alegria servir ao que Deus está fazendo em sua comunidade. Preencha os campos e converse pelo WhatsApp.
+                        </p>
+                    </div>
+
+                    <div class="lg:col-span-5 relative">
+                        <div id="cv-card" data-wa-number="558594328687" class="reveal delay-200 relative rounded-2xl bg-stone-900 text-white shadow-2xl flashlight-card">
+                            <div class="pointer-events-none absolute -top-20 -right-16 w-64 h-64 rounded-full bg-acid/20 blur-3xl animate-pulse-subtle"></div>
+                            <div class="pointer-events-none absolute inset-0 bg-grid opacity-20 mix-blend-soft-light"></div>
+                            <span class="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-acid to-transparent"></span>
+                            <div class="relative z-10 p-5 sm:p-6">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-11 h-11 shrink-0 rounded-full bg-stone-800 border border-white/10 flex items-center justify-center text-acid">
+                                        <iconify-icon icon="solar:book-bookmark-minimalistic-bold" class="text-xl"></iconify-icon>
+                                    </div>
+                                    <p class="text-lg font-bold tracking-tight leading-none">Rafael Elian</p>
+                                </div>
+                                <div class="mt-4 h-px w-full bg-white/10"></div>
+                                <p class="mt-4 text-[10px] font-mono font-bold uppercase tracking-widest text-acid">Mensagem que será enviada</p>
+                                <div class="mt-2.5 flex justify-end">
+                                    <div class="cv-bubble relative max-w-[94%] px-4 pt-3.5 pb-2.5">
+                                        <p id="cv-msg" class="text-[15px] leading-snug font-medium"></p>
+                                        <div class="mt-1.5 flex items-center justify-end gap-1 text-[10px] font-mono tracking-wide text-white/70">agora <iconify-icon icon="mdi:check-all" class="text-sm text-sky-300"></iconify-icon></div>
+                                    </div>
+                                </div>
+                                <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                    <label class="block">
+                                        <span class="block mb-1.5 text-[10px] font-mono uppercase tracking-widest text-stone-400">Seu nome (opcional)</span>
+                                        <input id="cv-name" class="cv-field" type="text" maxlength="60" autocomplete="name" placeholder="Como você se chama?">
+                                    </label>
+                                    <label class="block">
+                                        <span class="block mb-1.5 text-[10px] font-mono uppercase tracking-widest text-stone-400">Sua igreja (opcional)</span>
+                                        <input id="cv-church" class="cv-field" type="text" maxlength="80" autocomplete="organization" placeholder="Nome da igreja">
+                                    </label>
+                                </div>
+                                <a id="cv-wa" href="#convite" target="_blank" rel="noopener" aria-label="Chamar o Rafael Elian no WhatsApp (abre em uma nova aba)"
+                                    class="group/wa relative mt-4 inline-flex w-full items-center justify-center overflow-hidden rounded-full p-[2px]">
+                                    <span class="absolute inset-[-1000%] animate-spin-beam bg-[conic-gradient(from_0deg,transparent_0_300deg,#ccff00_360deg)]"></span>
+                                    <span class="relative z-10 flex w-full items-center justify-center gap-3 overflow-hidden rounded-full bg-stone-900 px-6 py-3.5 text-xs sm:text-sm font-mono font-bold uppercase tracking-widest text-acid">
+                                        <span class="absolute top-0 left-0 h-full w-full -skew-x-12 bg-gradient-to-r from-transparent via-white/25 to-transparent opacity-0 group-hover/wa:animate-shimmer group-hover/wa:opacity-100"></span>
+                                        <iconify-icon icon="mdi:whatsapp" class="relative text-xl"></iconify-icon>
+                                        <span class="relative">Chamar no WhatsApp</span>
+                                        <iconify-icon icon="solar:arrow-right-up-linear" class="relative text-lg transition-transform duration-500 group-hover/wa:translate-x-1 group-hover/wa:-translate-y-1"></iconify-icon>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="absolute -top-7 -right-2 sm:-right-6 z-30 w-28 h-28 sm:w-32 sm:h-32 rounded-full bg-acid shadow-xl flex items-center justify-center" aria-hidden="true">
+                            <svg viewBox="0 0 120 120" class="absolute inset-0 w-full h-full animate-spin-slow">
+                                <defs><path id="cv-circle" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0" /></defs>
+                                <text font-family="JetBrains Mono, monospace" font-size="9" font-weight="700" fill="#1c1917">
+                                    <textPath href="#cv-circle" textLength="270" lengthAdjust="spacing">CONVITE • CHAME NO WHATSAPP •</textPath>
+                                </text>
+                            </svg>
+                            <iconify-icon icon="mdi:whatsapp" class="text-4xl text-stone-900"></iconify-icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= RODAPÉ ================= -->
+        <footer class="relative z-10 bg-stone-900 text-white overflow-hidden">
+            <div class="pointer-events-none absolute inset-0 bg-grid opacity-10"></div>
+            <div class="pointer-events-none absolute -bottom-10 left-0 right-0 text-center select-none whitespace-nowrap anton text-[22vw] md:text-[17vw] leading-none text-transparent" style="-webkit-text-stroke:1.5px rgba(255,255,255,.08)" aria-hidden="true">RAFAEL ELIAN</div>
+            <div class="relative max-w-[1520px] mx-auto px-5 sm:px-8 md:px-12 lg:px-16 pt-14 pb-32 md:pb-44">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-10">
+                    <div class="md:col-span-5">
+                        <p class="anton text-4xl sm:text-5xl uppercase leading-none">Não se <span class="text-acid">cale!</span></p>
+                        <p class="mt-3 text-sm text-stone-400 max-w-xs">Eles precisam ouvir também.</p>
+                        <a href="nao_se_cale/assets/index.html" class="mt-6 inline-flex items-center gap-2 rounded-full bg-acid px-6 py-3 text-xs font-mono font-bold uppercase tracking-widest text-stone-900 hover:bg-white transition-colors">
+                            Conhecer o livro <iconify-icon icon="solar:arrow-right-up-linear" class="text-base"></iconify-icon>
+                        </a>
+                    </div>
+                    <div class="md:col-span-3">
+                        <p class="text-[10px] font-mono uppercase tracking-widest text-acid mb-4">Navegação</p>
+                        <ul class="space-y-2.5 text-sm text-stone-300">
+                            <li><a href="#obras" class="hover:text-white transition-colors">Obras</a></li>
+                            <li><a href="#autor" class="hover:text-white transition-colors">O Autor</a></li>
+                            <li><a href="#convite" class="hover:text-white transition-colors">Convite</a></li>
+                        </ul>
+                    </div>
+                    <div class="md:col-span-4">
+                        <p class="text-[10px] font-mono uppercase tracking-widest text-acid mb-4">Contato</p>
+                        <ul class="space-y-2.5 text-sm text-stone-300">
+                            <li><a href="https://instagram.com/rafaelelian" target="_blank" rel="noopener" class="inline-flex items-center gap-2 hover:text-white transition-colors"><iconify-icon icon="mdi:instagram" class="text-lg"></iconify-icon> @rafaelelian</a></li>
+                            <li><a href="#convite" class="inline-flex items-center gap-2 hover:text-white transition-colors"><iconify-icon icon="mdi:whatsapp" class="text-lg"></iconify-icon> Convidar para ministrar</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-[11px] font-mono uppercase tracking-wider text-stone-500">
+                    <span>© <span id="year">2026</span> Rafael Elian. Todos os direitos reservados.</span>
+                    <span>rafaelelian.com.br</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        (function () {
+            // ano do rodapé
+            var y = document.getElementById('year'); if (y) y.textContent = new Date().getFullYear();
+
+            // header: sombra ao rolar + menu mobile
+            var header = document.getElementById('main-header');
+            var onScroll = function () { header.classList.toggle('is-scrolled', window.scrollY > 10); };
+            window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+            var btn = document.getElementById('menu-btn'), menu = document.getElementById('mobile-menu'), icon = document.getElementById('menu-icon');
+            var setMenu = function (open) {
+                menu.classList.toggle('hidden', !open);
+                btn.setAttribute('aria-expanded', String(open));
+                btn.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+                icon.setAttribute('icon', open ? 'solar:close-circle-linear' : 'solar:hamburger-menu-linear');
+            };
+            btn.addEventListener('click', function () { setMenu(menu.classList.contains('hidden')); });
+            menu.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
+
+            // revelações ao rolar
+            var io = ('IntersectionObserver' in window) ? new IntersectionObserver(function (entries) {
+                entries.forEach(function (e) {
+                    if (!e.isIntersecting) return;
+                    e.target.classList.add('active', 'reveal-active');
+                    io.unobserve(e.target);
+                });
+            }, { threshold: 0.15, rootMargin: '0px 0px -6% 0px' }) : null;
+            var targets = document.querySelectorAll('.reveal, [data-reveal-group]');
+            targets.forEach(function (el) {
+                if (io) io.observe(el); else el.classList.add('active', 'reveal-active');
+            });
+            // título do hero entra logo ao carregar
+            window.addEventListener('load', function () {
+                var hc = document.getElementById('hero-copy'); if (hc) hc.classList.add('reveal-active');
+            });
+
+            // lanterna nos cards
+            document.addEventListener('pointermove', function (ev) {
+                var card = ev.target.closest && ev.target.closest('.flashlight-card'); if (!card) return;
+                var r = card.getBoundingClientRect();
+                card.style.setProperty('--mouse-x', (ev.clientX - r.left) + 'px');
+                card.style.setProperty('--mouse-y', (ev.clientY - r.top) + 'px');
+            }, { passive: true });
+
+            // parallax suave no retrato
+            var par = document.getElementById('portrait-parallax'), portrait = document.getElementById('portrait');
+            if (par && portrait && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                var tick = false;
+                var move = function () {
+                    tick = false;
+                    var r = portrait.getBoundingClientRect();
+                    if (r.bottom < 0 || r.top > window.innerHeight) return;
+                    var p = (r.top + r.height / 2 - window.innerHeight / 2) / window.innerHeight;
+                    par.style.transform = 'translate3d(0,' + (p * -22).toFixed(1) + 'px,0)';
+                };
+                window.addEventListener('scroll', function () { if (!tick) { tick = true; requestAnimationFrame(move); } }, { passive: true });
+                move();
+            }
+
+            // convite via WhatsApp
+            var card = document.getElementById('cv-card');
+            if (card) {
+                var num = card.getAttribute('data-wa-number');
+                var nameEl = document.getElementById('cv-name'), churchEl = document.getElementById('cv-church');
+                var msgEl = document.getElementById('cv-msg'), link = document.getElementById('cv-wa');
+                var build = function () {
+                    var n = nameEl.value.trim(), c = churchEl.value.trim();
+                    var t = 'Paz do Senhor, Rafael!' + (n ? ' Meu nome é ' + n + '.' : '') +
+                        ' Gostaria de te convidar para ministrar a Palavra ' + (c ? 'na ' + c : 'na nossa igreja') +
+                        '. Podemos conversar sobre data e detalhes?';
+                    msgEl.textContent = t;
+                    link.href = 'https://wa.me/' + num + '?text=' + encodeURIComponent(t);
+                };
+                nameEl.addEventListener('input', build); churchEl.addEventListener('input', build); build();
+            }
+        })();
+    </script>
+    <script>
+        /* Dobra O AUTOR: animações */
+        (function () {
+            var sec = document.getElementById('autor'); if (!sec) return;
+            var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            var fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+            // vocações: toque alterna (no celular não existe hover)
+            var rows = sec.querySelectorAll('[data-vocation]');
+            rows.forEach(function (r) {
+                r.addEventListener('click', function () {
+                    var open = r.classList.contains('is-open');
+                    rows.forEach(function (x) { x.classList.remove('is-open'); });
+                    if (!open) r.classList.add('is-open');
+                });
+            });
+
+            // texto que acende palavra por palavra conforme a rolagem
+            var scrub = sec.querySelector('[data-scrub]'), words = [];
+            if (scrub) {
+                var txt = scrub.textContent.trim().split(/\s+/);
+                scrub.setAttribute('aria-label', scrub.textContent.trim());
+                scrub.textContent = '';
+                txt.forEach(function (w, i) {
+                    var sp = document.createElement('span');
+                    sp.className = 'scrub-word'; sp.setAttribute('aria-hidden', 'true');
+                    sp.textContent = w + (i < txt.length - 1 ? ' ' : '');
+                    scrub.appendChild(sp); words.push(sp);
+                });
+            }
+            var ghost = sec.querySelector('[data-speed]');
+            var tick = false;
+            var update = function () {
+                tick = false;
+                var vh = window.innerHeight;
+                if (scrub) {
+                    var r = scrub.getBoundingClientRect();
+                    var p = reduce ? 1 : Math.min(1, Math.max(0, (vh * 0.9 - r.top) / (vh * 0.55 + r.height * 0.6)));
+                    var n = Math.round(p * words.length);
+                    words.forEach(function (w, i) { w.classList.toggle('on', i < n); });
+                }
+                if (ghost && !reduce) {
+                    var sr = sec.getBoundingClientRect();
+                    ghost.style.transform = 'translate3d(0,' + (sr.top * parseFloat(ghost.getAttribute('data-speed'))).toFixed(1) + 'px,0)';
+                }
+            };
+            window.addEventListener('scroll', function () { if (!tick) { tick = true; requestAnimationFrame(update); } }, { passive: true });
+            window.addEventListener('resize', update); update();
+
+            // contadores
+            var counters = sec.querySelectorAll('[data-count]');
+            var run = function (el) {
+                var target = parseInt(el.getAttribute('data-count'), 10) || 0;
+                var pad = function (n) { return (n < 10 ? '0' : '') + n; };
+                if (reduce) { el.textContent = pad(target); return; }
+                var t0 = null, dur = 1400;
+                var step = function (ts) {
+                    if (t0 === null) t0 = ts;
+                    var p = Math.min(1, (ts - t0) / dur), e = 1 - Math.pow(1 - p, 3);
+                    el.textContent = pad(Math.round(target * e));
+                    if (p < 1) requestAnimationFrame(step);
+                };
+                requestAnimationFrame(step);
+            };
+            if ('IntersectionObserver' in window) {
+                var co = new IntersectionObserver(function (es) {
+                    es.forEach(function (e) { if (e.isIntersecting) { run(e.target); co.unobserve(e.target); } });
+                }, { threshold: 0.6 });
+                counters.forEach(function (c) { co.observe(c); });
+            } else counters.forEach(run);
+
+            if (!fine || reduce) return;
+
+            // luz que segue o mouse (suavizada)
+            var glow = document.getElementById('autor-glow');
+            var tx = 78, ty = 18, cx = 78, cy = 18, raf = null;
+            var loop = function () {
+                cx += (tx - cx) * 0.08; cy += (ty - cy) * 0.08;
+                glow.style.setProperty('--gx', cx.toFixed(2) + '%'); glow.style.setProperty('--gy', cy.toFixed(2) + '%');
+                raf = (Math.abs(tx - cx) + Math.abs(ty - cy) > 0.05) ? requestAnimationFrame(loop) : null;
+            };
+            sec.addEventListener('pointermove', function (e) {
+                var r = sec.getBoundingClientRect();
+                tx = (e.clientX - r.left) / r.width * 100; ty = (e.clientY - r.top) / r.height * 100;
+                if (!raf) raf = requestAnimationFrame(loop);
+            }, { passive: true });
+
+            // tilt 3D no card da bio
+            var card = sec.querySelector('.tilt-card');
+            if (card) {
+                card.addEventListener('pointermove', function (e) {
+                    var r = card.getBoundingClientRect();
+                    var x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
+                    card.style.transform = 'rotateX(' + (-y * 5).toFixed(2) + 'deg) rotateY(' + (x * 6).toFixed(2) + 'deg) translateZ(0)';
+                });
+                card.addEventListener('pointerleave', function () { card.style.transform = ''; });
+            }
+        })();
+    </script>
+</body>
+
+</html>
