@@ -1047,7 +1047,7 @@
                         </div>
 
                         <!-- Secondary Frosted Pill Button (From Reference Layout) -->
-                        <a href="#proposito"
+                        <a href="#meta-impressao"
                             class="glass-pill px-6 py-3.5 rounded-full text-xs font-mono font-bold uppercase tracking-normal text-stone-900 hover:bg-white hover:border-stone-900 transition-all duration-300 flex items-center gap-2 shadow-sm hover:shadow-md group">
                             <span>Explorar</span>
                             <iconify-icon icon="solar:arrow-down-linear"
@@ -1184,7 +1184,7 @@
                                 class="w-full h-4 sm:h-5 bg-stone-100 border border-stone-200 rounded-full overflow-hidden relative shadow-inner p-[1.5px]">
                                 <div id="meta-progress-fill"
                                     class="h-full bg-stone-900 rounded-full relative overflow-hidden transition-all duration-1000 ease-out"
-                                    style="width: 10%;">
+                                    style="width: 0%;">
                                     <div
                                         class="absolute inset-0 w-full h-full -skew-x-12 bg-gradient-to-r from-transparent via-white/25 to-transparent animate-[shimmer_2s_infinite]">
                                     </div>
@@ -1196,8 +1196,8 @@
                         <!-- Bottom Row: Metric + CTA -->
                         <div class="meta-foot flex flex-wrap items-center justify-between gap-4 pt-1">
                             <div class="flex items-baseline gap-2">
-                                <span class="meta-num text-xl sm:text-2xl font-black text-stone-900 tracking-tight">10%</span>
-                                <span class="meta-label text-xs sm:text-sm font-bold text-stone-800">da meta de impress&#xE3;o atingida</span>
+                                <span id="meta-progress-pct" class="meta-num text-xl sm:text-2xl font-black text-stone-900 tracking-tight">0%</span>
+                                <span class="meta-label text-xs sm:text-sm font-bold text-stone-800">da meta atingida</span>
                             </div>
                             <a href="https://loja.infinitepay.io/rafaelelian"
                                 class="meta-btn px-5 py-2.5 bg-stone-900 text-[#ccff00] hover:bg-stone-800 rounded-full text-xs font-mono font-bold uppercase tracking-tight transition-all duration-300 shadow-md hover:shadow-xl flex items-center gap-2 group">
@@ -1216,18 +1216,19 @@
 
     <!-- FLOATING PERSISTENT PROGRESS PILL (Discreta e sempre acessível conforme scroll) -->
     <aside id="floating-meta-bar"
-        class="fixed bottom-6 right-6 sm:right-10 z-50 bg-stone-900 text-white pl-4 pr-3 py-2.5 rounded-full shadow-2xl border border-stone-700/60 backdrop-blur-md flex items-center gap-3.5 transition-all duration-500 translate-y-28 opacity-0 pointer-events-none"
+        class="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 bg-stone-900/90 text-white pl-3.5 pr-2.5 py-2 rounded-full shadow-xl border border-stone-700/60 backdrop-blur-md flex items-center gap-3 transition-all duration-500 translate-y-28 opacity-0 pointer-events-none"
         aria-label="Progresso da Meta">
         <div class="flex items-center gap-2">
-            <span class="w-2 h-2 rounded-full bg-[#ccff00] animate-pulse"></span>
-            <span class="text-xs font-mono font-bold text-white tracking-tight">META: <span
-                    class="text-[#ccff00]">10%</span></span>
+            <span class="w-1.5 h-1.5 rounded-full bg-[#ccff00] animate-pulse"></span>
+            <span class="text-[11px] font-mono font-bold text-white tracking-tight">META: <span
+                    id="floating-meta-pct" class="text-[#ccff00]">0%</span></span>
         </div>
-        <div class="w-16 h-1.5 bg-stone-700 rounded-full overflow-hidden relative">
-            <div class="h-full bg-[#ccff00] w-[10%]"></div>
+        <div class="w-14 h-1 bg-stone-700 rounded-full overflow-hidden relative">
+            <div id="floating-meta-fill" class="h-full bg-[#ccff00] transition-all duration-1000 ease-out"
+                style="width: 0%;"></div>
         </div>
-        <a href="https://loja.infinitepay.io/alinearaujo-dv/lfh9352-devocional-jesus-e-suficiente"
-            class="px-3.5 py-1.5 bg-[#ccff00] text-stone-900 hover:bg-white rounded-full text-[11px] font-mono font-bold uppercase tracking-tight transition-colors shadow-sm flex items-center gap-1">
+        <a href="https://loja.infinitepay.io/rafaelelian"
+            class="px-3 py-1.5 bg-[#ccff00] text-stone-900 hover:bg-white rounded-full text-[10px] font-mono font-bold uppercase tracking-tight transition-colors shadow-sm flex items-center gap-1">
             <span>Garantir</span>
             <iconify-icon icon="solar:arrow-right-linear" class="text-xs"></iconify-icon>
         </a>
@@ -1336,8 +1337,8 @@
                                 <p class="text-5xl font-black tracking-tighter leading-none text-white">
                                     R$39<span class="text-3xl align-top text-[#ccff00]">,90</span>
                                 </p>
-                                <p class="pb-1.5 text-lg font-mono text-stone-500">
-                                    Sem Frete
+                                <p class="pb-1.5 text-sm font-mono text-stone-500">
+                                    Sem Frete (Retirada em Fortaleza)
                                 </p>
                             </div>
                         </div>
@@ -1511,8 +1512,8 @@
                     </div>
 
                     <div class="reveal delay-200 glass-pill rounded-2xl border border-stone-300/80 shadow-sm p-6 sm:p-8 flashlight-card author-bio">
-                        <p data-scrub class="text-lg sm:text-xl font-medium tracking-tight text-stone-900 leading-snug">Rafael é casado com Viviane Vale Elian, pai do Benjamim e pai do coração de Theo e Valentina. Pastor, professor e escritor, carrega uma profunda paixão por ver vidas transformadas pelo Evangelho.</p>
-                        <p data-scrub class="mt-5 text-sm sm:text-[15px] text-stone-600 leading-relaxed">Dedicado ao ensino e à pregação da Palavra. Rafael também se expressa por meio da escrita, sendo autor de obras como Antes do Compromisso e Suficiente. Sua jornada é marcada pelo compromisso de anunciar a mensagem da Graça por onde Deus o conduz, inspirando pessoas a viverem uma fé autêntica e transformadora.</p>
+                        <p data-scrub class="text-lg sm:text-xl font-medium tracking-tight text-stone-900 leading-snug">Rafael é casado com Viviane Elian, pai do Benjamim e pai do coração de Theo e Valentina. Pastor, professor e escritor, carrega uma profunda paixão por ver vidas transformadas pelo Evangelho.</p>
+                        <p data-scrub class="mt-5 text-sm sm:text-[15px] text-stone-600 leading-relaxed">Dedicado ao ensino e à pregação da Palavra. Rafael também se expressa por meio da escrita. Sua jornada é marcada pelo compromisso de anunciar a mensagem da Graça por onde Deus o conduz, inspirando pessoas a viverem uma fé autêntica e transformadora.</p>
                     </div>
 
                     <div class="author-works reveal delay-300">
@@ -1525,7 +1526,7 @@
                                 <span class="absolute inset-y-0 left-0 w-1 bg-[#ccff00] scale-y-0 origin-top transition-transform duration-500 group-hover/work:scale-y-100"></span>
                                 <div>
                                     <span class="text-[10px] font-mono text-stone-400 tracking-widest">01</span>
-                                    <p class="text-base font-bold tracking-tight text-stone-900">Antes do Compromisso (Jan/2027)</p>
+                                    <p class="text-base font-bold tracking-tight text-stone-900">Próximo Lançamento (Jan/2027)</p>
                                 </div>
                                 <iconify-icon icon="solar:arrow-right-up-linear" class="text-xl text-stone-400 transition-all duration-500 group-hover/work:text-stone-900 group-hover/work:translate-x-1 group-hover/work:-translate-y-1"></iconify-icon>
                             </div>
@@ -1533,7 +1534,7 @@
                                 <span class="absolute inset-y-0 left-0 w-1 bg-[#ccff00] scale-y-0 origin-top transition-transform duration-500 group-hover/work:scale-y-100"></span>
                                 <div>
                                     <span class="text-[10px] font-mono text-stone-400 tracking-widest">02</span>
-                                    <p class="text-base font-bold tracking-tight text-stone-900">Suficiente (Mar/2027)</p>
+                                    <p class="text-base font-bold tracking-tight text-stone-900">Próximo Lançamento (Mar/2027)</p>
                                 </div>
                                 <iconify-icon icon="solar:arrow-right-up-linear" class="text-xl text-stone-400 transition-all duration-500 group-hover/work:text-stone-900 group-hover/work:translate-x-1 group-hover/work:-translate-y-1"></iconify-icon>
                             </div>
@@ -2731,6 +2732,56 @@
             }
             if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
             else init();
+        })();
+    </script>
+    <script>
+        // =====================================================
+        // META DE IMPRESSÃO
+        // Para atualizar a barra, altere APENAS o número abaixo.
+        // =====================================================
+        const META_LIVROS = 600;     
+        const LIVROS_VENDIDOS = 0;    
+
+        (function () {
+            var pct = Math.min(100, Math.max(0, (LIVROS_VENDIDOS / META_LIVROS) * 100));
+            var texto = (Math.round(pct * 10) / 10).toString().replace('.', ',') + '%';
+
+            var fillCard = document.getElementById('meta-progress-fill');
+            var fillFloat = document.getElementById('floating-meta-fill');
+            var numCard = document.getElementById('meta-progress-pct');
+            var numFloat = document.getElementById('floating-meta-pct');
+
+            if (fillCard) fillCard.style.width = pct + '%';
+            if (fillFloat) fillFloat.style.width = pct + '%';
+            if (numCard) numCard.textContent = texto;
+            if (numFloat) numFloat.textContent = texto;
+        })();
+
+        // Mostra a barra flutuante só depois que o scroll passa da barra de meta
+        (function () {
+            var bar = document.getElementById('floating-meta-bar');
+            var trilho = document.getElementById('meta-progress-fill');
+            if (!bar || !trilho) return;
+            trilho = trilho.parentElement;
+            var HIDE = ['translate-y-28', 'opacity-0', 'pointer-events-none'];
+            var visivel = false, agendado = false;
+
+            function atualizar() {
+                agendado = false;
+                var passou = trilho.getBoundingClientRect().bottom < 80; // 80px = altura do header
+                if (passou === visivel) return;
+                visivel = passou;
+                HIDE.forEach(function (c) { bar.classList.toggle(c, !passou); });
+            }
+            function pedir() {
+                if (agendado) return;
+                agendado = true;
+                requestAnimationFrame(atualizar);
+            }
+            window.addEventListener('scroll', pedir, { passive: true });
+            window.addEventListener('resize', pedir);
+            window.addEventListener('load', pedir);
+            atualizar();
         })();
     </script>
 </body>
