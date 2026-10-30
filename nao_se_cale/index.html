@@ -14,7 +14,7 @@
     <meta property="og:description"
         content="Eles precisam ouvir também. 15 minutos mudaram tudo. Edição oficial de colecionador." />
     <meta property="og:type" content="book" />
-    <meta property="og:image" content="raw_files/mockup_nao_se_cale.png" />
+    <meta property="og:image" content="https://rafaelelian-theta.vercel.app/assets/raw_files/mockup_nao_se_cale.png" />
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -950,7 +950,7 @@
             <div id="hero-stage" class="absolute inset-0 z-10 pointer-events-none overflow-hidden">
                 <div class="hero-video-box">
                     <video id="hero-video" class="w-full h-full object-cover select-none"
-                        src="raw_files/nao_se_cale4.mp4" preload="auto" muted playsinline tabindex="-1" aria-hidden="true">
+                        src="/assets/raw_files/nao_se_cale4.mp4" preload="auto" muted playsinline tabindex="-1" aria-hidden="true">
                     </video>
                 </div>
                 <!-- Ondas de voz saindo do livro -->
@@ -1275,7 +1275,7 @@
                         onmousemove="const rect = this.getBoundingClientRect(); this.style.setProperty('--mouse-x', `${event.clientX - rect.left}px`); this.style.setProperty('--mouse-y', `${event.clientY - rect.top}px`);">
 
                         <!-- Mockup cobrindo 100% do card (object-cover), com leve degradê no topo para os selos -->
-                        <img src="raw_files/mockup_nao_se_cale.webp"
+                        <img src="/assets/raw_files/mockup_nao_se_cale.webp"
                             alt="Mockup oficial do livro Não Se Cale, de Rafael Elian"
                             width="1920" height="1160"
                             class="book-cover-img absolute inset-0 z-0 w-full h-full object-cover object-[50%_46%] transition-transform duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
@@ -1445,7 +1445,7 @@
 
                             <div class="author-photo-clip absolute inset-0 overflow-hidden rounded-2xl">
                                 <div class="author-parallax absolute -inset-4">
-                                    <img src="raw_files/FOTO-SORRINDO.webp"
+                                    <img src="/assets/raw_files/FOTO-SORRINDO.webp"
                                         alt="Retrato de Rafael Elian, autor do livro Não Se Cale"
                                         class="author-photo-img w-full h-full object-cover object-[50%_22%]" loading="lazy" />
                                 </div>
@@ -1844,7 +1844,7 @@
 
         <!-- VIDEO BACKGROUND -->
         <div id="cta-video-wrap" class="absolute -inset-[8%] z-0">
-            <video id="cta-video" class="w-full h-full object-cover" src="raw_files/nao_se_cale4.mp4"
+            <video id="cta-video" class="w-full h-full object-cover" src="/assets/raw_files/nao_se_cale4.mp4"
                 autoplay muted loop playsinline preload="metadata" tabindex="-1" aria-hidden="true"></video>
         </div>
         <div class="absolute inset-0 z-[1] bg-stone-900/65"></div>
@@ -2083,7 +2083,7 @@
                 //    sem requisição de rede a cada frame. Usa a versão all-intra (_d desktop / _m mobile)
                 //    se existir; senão cai no arquivo original.
                 (async () => {
-                    const light = CONFIG.isMobile ? 'raw_files/nao_se_cale3_m.mp4' : 'raw_files/nao_se_cale3_d.mp4';
+                    const light = CONFIG.isMobile ? '/assets/raw_files/nao_se_cale3_m.mp4' : '/assets/raw_files/nao_se_cale3_d.mp4';
                     const candidates = [light, DOM.video.getAttribute('src')];
                     for (const url of candidates) {
                         try {
