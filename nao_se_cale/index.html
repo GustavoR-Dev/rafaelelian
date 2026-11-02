@@ -1015,7 +1015,7 @@
                     <!-- Compact Editorial Description & Pré-Venda Disclaimer -->
                     <div id="hero-description" class="mb-5 max-w-[440px] opacity-0">
                         <p class="text-[13px] sm:text-base text-stone-800 font-normal leading-snug">
-                            Trata-se de uma pré-venda. O livro só será impresso após atingirmos 100% da meta, e o envio/retirada ocorrerá após o lançamento.
+                            Trata-se de uma pré-venda. O livro só será impresso após atingirmos 100% da meta da pré-venda, e o envio/retirada ocorrerá após o lançamento.
                         </p>
                     </div>
 
@@ -1214,9 +1214,9 @@
         </div>
     </section>
 
-    <!-- FLOATING PERSISTENT PROGRESS PILL (Discreta e sempre acessível conforme scroll) -->
+    <!-- FLOATING PERSISTENT PROGRESS PILL (visível desde a Hero, em toda a página) -->
     <aside id="floating-meta-bar"
-        class="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 bg-stone-900/90 text-white pl-3.5 pr-2.5 py-2 rounded-full shadow-xl border border-stone-700/60 backdrop-blur-md flex items-center gap-3 transition-all duration-500 translate-y-28 opacity-0 pointer-events-none"
+        class="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 bg-stone-900/90 text-white pl-3.5 pr-2.5 py-2 rounded-full shadow-xl border border-stone-700/60 backdrop-blur-md flex items-center gap-3 transition-all duration-500"
         aria-label="Progresso da Meta">
         <div class="flex items-center gap-2">
             <span class="w-1.5 h-1.5 rounded-full bg-[#ccff00] animate-pulse"></span>
@@ -1359,7 +1359,7 @@
                         </div>
 
                         <p class="relative z-10 mt-4 text-[11px] leading-relaxed text-stone-500 border-t border-white/10 pt-3">
-                            Trata-se de uma pré-venda. O livro só será impresso após atingirmos 100% da meta, e o envio/retirada ocorrerá após o lançamento.
+                            Trata-se de uma pré-venda. O livro só será impresso após atingirmos 100% da meta da pré-venda, e o envio/retirada ocorrerá após o lançamento.
                         </p>
                     </div>
 
@@ -1894,7 +1894,7 @@
                 </h2>
 
                 <p class="reveal delay-300 text-stone-300 text-base sm:text-sm max-w-xl mb-8 leading-relaxed font-light">
-                    Trata-se de uma pré-venda. O livro só será impresso após atingirmos 100% da meta, e o envio/retirada ocorrerá após o lançamento.
+                    Trata-se de uma pré-venda. O livro só será impresso após atingirmos 100% da meta da pré-venda, e o envio/retirada ocorrerá após o lançamento.
                 </p>
 
                 <!-- Magnetic beam button -->
@@ -2755,33 +2755,6 @@
             if (fillFloat) fillFloat.style.width = pct + '%';
             if (numCard) numCard.textContent = texto;
             if (numFloat) numFloat.textContent = texto;
-        })();
-
-        // Mostra a barra flutuante só depois que o scroll passa da barra de meta
-        (function () {
-            var bar = document.getElementById('floating-meta-bar');
-            var trilho = document.getElementById('meta-progress-fill');
-            if (!bar || !trilho) return;
-            trilho = trilho.parentElement;
-            var HIDE = ['translate-y-28', 'opacity-0', 'pointer-events-none'];
-            var visivel = false, agendado = false;
-
-            function atualizar() {
-                agendado = false;
-                var passou = trilho.getBoundingClientRect().bottom < 80; // 80px = altura do header
-                if (passou === visivel) return;
-                visivel = passou;
-                HIDE.forEach(function (c) { bar.classList.toggle(c, !passou); });
-            }
-            function pedir() {
-                if (agendado) return;
-                agendado = true;
-                requestAnimationFrame(atualizar);
-            }
-            window.addEventListener('scroll', pedir, { passive: true });
-            window.addEventListener('resize', pedir);
-            window.addEventListener('load', pedir);
-            atualizar();
         })();
     </script>
 </body>
