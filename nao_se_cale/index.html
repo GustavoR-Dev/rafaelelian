@@ -2035,6 +2035,8 @@
             // Coalesced RAF execution with seeking check to ensure
             // zero jumping and buttery frame updates on scroll
             // ====================================================
+            // MOBILE: o vídeo roda sozinho em loop (sem scrub/parallax pelo scroll).
+            const playLoop = CONFIG.isMobile && !CONFIG.isReducedMotion;
             let targetVideoTime = 0;
             let currentVideoDuration = CONFIG.videoDurationFallback;
             let isSeeking = false;
@@ -2045,7 +2047,7 @@
                     currentVideoDuration = DOM.video.duration;
                 }
                 // Prime the first frame cleanly (só no desktop, onde o vídeo é controlado pelo scroll)
-                DOM.video.currentTime = targetVideoTime; // mantém a posição se o src for trocado pelo blob
+                if (!playLoop) DOM.video.currentTime = targetVideoTime; // mantém a posição se o src for trocado pelo blob
             }
 
             if (DOM.video.readyState >= 1) onVideoMetadataReady();
@@ -2060,7 +2062,7 @@
             // e só pede novo seek quando o anterior terminou -> sem engasgos/saltos.
             let smoothTime = 0;
             let lastSeekAt = 0;
-            DOM.video.pause();
+            if (!playLoop) DOM.video.pause();
             function scrubRenderLoop(now) {
                 if (!CONFIG.isReducedMotion && DOM.video) {
                     const diff = targetVideoTime - smoothTime;
@@ -2075,9 +2077,9 @@
                 }
                 rafId = requestAnimationFrame(scrubRenderLoop);
             }
-            rafId = requestAnimationFrame(scrubRenderLoop);
+            if (!playLoop) rafId = requestAnimationFrame(scrubRenderLoop);
 
-            if (!CONFIG.isReducedMotion) {
+            if (!CONFIG.isReducedMotion && !CONFIG.isMobile) {
                 // ---- SCRUB FLUIDO (desktop e mobile) ----
                 // 1) baixa o vídeo inteiro para a memória (blob): os seeks passam a ser locais,
                 //    sem requisição de rede a cada frame. Usa a versão all-intra (_d desktop / _m mobile)
@@ -2096,15 +2098,22 @@
                         } catch (e) { /* tenta o próximo */ }
                     }
                 })();
-                // 2) iOS só passa a desenhar frames "pausados" depois de um play() liberado por toque
-                if (CONFIG.isMobile) {
-                    const unlockVideo = () => {
-                        const pr = DOM.video.play();
-                        const stop = () => { DOM.video.pause(); DOM.video.currentTime = smoothTime; };
-                        if (pr && pr.then) pr.then(stop).catch(() => {}); else stop();
-                    };
-                    window.addEventListener('touchstart', unlockVideo, { once: true, passive: true });
-                }
+            }
+
+            // ---- MOBILE: vídeo em loop contínuo, independente do scroll ----
+            if (playLoop) {
+                DOM.video.muted = true;
+                DOM.video.loop = true;
+                DOM.video.playsInline = true;
+                const tryPlay = () => {
+                    const pr = DOM.video.play();
+                    if (pr && pr.catch) pr.catch(() => {});
+                };
+                tryPlay();
+                // se o navegador bloquear o autoplay (ex.: economia de bateria no iOS), o 1º toque libera
+                window.addEventListener('touchstart', tryPlay, { once: true, passive: true });
+                // retoma ao voltar para a aba
+                document.addEventListener('visibilitychange', () => { if (!document.hidden) tryPlay(); });
             }
 
             // ====================================================
