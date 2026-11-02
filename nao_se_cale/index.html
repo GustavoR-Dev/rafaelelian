@@ -2192,7 +2192,8 @@
             // Controls pinning, video currentTime, text exit blur/fade,
             // and reverses seamlessly on upward scroll
             // ====================================================
-            const scrubTimeline = gsap.timeline({
+            // MOBILE: sem pin e sem scrub. A Hero é uma dobra comum (100svh) com o vídeo em loop ao fundo.
+            const scrubTimeline = CONFIG.isMobile ? null : gsap.timeline({
                 scrollTrigger: {
                     trigger: DOM.heroTrack,
                     start: 'top top',
@@ -2238,7 +2239,7 @@
             // TEXT BLOCK EXIT ANIMATION DURING SCROLL (Section 15)
             // As user scrolls, the text block exits with blur, fade, and translation,
             // clearing the stage for the book opening and page flipping video!
-            if (!CONFIG.isReducedMotion) {
+            if (!CONFIG.isReducedMotion && scrubTimeline) {
                 scrubTimeline
                     // Phase 1 (0 -> 45% progress): Text dissolves gracefully
                     .to(DOM.ctaGroup, {
